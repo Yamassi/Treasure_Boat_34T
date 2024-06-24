@@ -1,4 +1,5 @@
 using Tretimi.Game.Scripts.System;
+using Tretimi.Game.Scripts.UI.Pages;
 using Tretimi.Game.Scripts.UI.Pages.Shop;
 using Zenject;
 
@@ -7,18 +8,22 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
     public class ShopState : State
     {
         private Shop _shop;
+        private MainMenu _mainMenu;
+
 
         [Inject]
         public void Construct(IStateSwitcher stateSwitcher,
             IDataService dataService,
             IAudioService audioService,
-            IUIService uiService, Shop shop)
+            IUIService uiService, Shop shop,
+            MainMenu mainMenu)
         {
             _audioService = audioService;
             _stateSwitcher = stateSwitcher;
             _dataService = dataService;
             _uiService = uiService;
             _shop = shop;
+            _mainMenu = mainMenu;
         }
 
         public override void Enter()
@@ -36,20 +41,22 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
 
         public override void Subsribe()
         {
-            _shop.Close.onClick.AddListener(
-                () => _stateSwitcher.SwitchState<MainMenuState>());
-            _shop.OnTryToBuy += TryToBuy;
+            //_shop.Close.onClick.AddListener(
+                //() => _stateSwitcher.SwitchState<MainMenuState>());
+            //_shop.OnTryToBuy += TryToBuy;
         }
 
         public override void Unsubsribe()
         {
-            _shop.Close.onClick.RemoveAllListeners();
-            _shop.OnTryToBuy -= TryToBuy;
+            //_shop.Close.onClick.RemoveAllListeners();
+            //_shop.OnTryToBuy -= TryToBuy;
         }
 
         public override void ComponentsToggle(bool value)
         {
             _shop.gameObject.SetActive(value);
+            _mainMenu.gameObject.SetActive(value);
+
         }
 
         private void Init()

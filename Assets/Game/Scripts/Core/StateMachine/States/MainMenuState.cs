@@ -1,3 +1,4 @@
+using Tretimi.Core.SM;
 using Tretimi.Game.Scripts.System;
 using Tretimi.Game.Scripts.UI.Pages;
 using Tretimi.Game.Scripts.UI.Pages.Top;
@@ -45,6 +46,12 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
                 () => _stateSwitcher.SwitchState<SettingsState>());
             _mainMenu.Shop.onClick.AddListener(
                 () => _stateSwitcher.SwitchState<ShopState>());
+            _mainMenu.Home.onClick.AddListener(
+                () => _stateSwitcher.SwitchState<MainMenuState>());
+            _mainMenu.Levels.onClick.AddListener(
+                () => _stateSwitcher.SwitchState<LevelsState>());
+            _mainMenu.Achievement.onClick.AddListener(
+                () => _stateSwitcher.SwitchState<AchievementState>());
             _mainMenu.Play.onClick.AddListener(Play);
         }
 
@@ -52,6 +59,9 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
         {
             _mainMenu.Settings.onClick.RemoveAllListeners();
             _mainMenu.Shop.onClick.RemoveAllListeners();
+            _mainMenu.Home.onClick.RemoveAllListeners();
+            _mainMenu.Levels.onClick.RemoveAllListeners();
+            _mainMenu.Achievement.onClick.RemoveAllListeners();
             _mainMenu.Play.onClick.RemoveAllListeners();
         }
 

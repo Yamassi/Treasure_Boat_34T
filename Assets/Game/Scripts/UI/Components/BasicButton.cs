@@ -12,12 +12,12 @@ namespace Tretimi.Game.Scripts.UI.Components
             Button = GetComponent<Button>();
         }
 
-        private void OnEnable()
+        public virtual void OnEnable()
         {
             Button.onClick.AddListener(Click);
         }
 
-        private void OnDisable()
+        public virtual void OnDisable()
         {
             Button.onClick.RemoveListener(Click);
         }

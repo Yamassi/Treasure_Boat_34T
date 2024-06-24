@@ -9,5 +9,8 @@ namespace Tretimi.Game.Scripts.UI.Pages
         public TextMeshProUGUI Header, Score, Earn;
         public Button Repeat, StartGame, BackToMenu;
         public Image Background;
+        public Image[] Stars;
+
+
     }
 }

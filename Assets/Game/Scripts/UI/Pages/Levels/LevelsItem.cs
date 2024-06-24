@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -12,12 +13,14 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
         [SerializeField] private List<Image> _stars;
         [SerializeField] private Button _play;
         [SerializeField] private Image _lock;
+        [SerializeField] private Image _opened;
         [SerializeField] private bool _withStars;
 
         public Action<int> OnPlay;
 
         private void OnDisable() =>
             _play.onClick.RemoveAllListeners();
+        [Button]
 
         public void SetOpen()
         {
@@ -28,12 +31,14 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
                 _stars[0].gameObject.SetActive(false);
                 _stars[1].gameObject.SetActive(false);
                 _stars[2].gameObject.SetActive(false);
+                _opened.gameObject.SetActive(true);
             }
 
             _play.onClick.RemoveAllListeners();
             _play.onClick.AddListener(() => OnPlay?.Invoke(_id));
         }
 
+        [Button]
         public void SetLock()
         {
             _lock.gameObject.SetActive(true);
@@ -45,7 +50,6 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
                 _stars[2].gameObject.SetActive(false);
             }
         }
-
         public void SetStars(StarsCount stars)
         {
             switch (stars)
@@ -66,6 +70,7 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
                     _stars[2].gameObject.SetActive(true);
                     break;
             }
+            _opened.gameObject.SetActive(false);
         }
 
         public enum StarsCount

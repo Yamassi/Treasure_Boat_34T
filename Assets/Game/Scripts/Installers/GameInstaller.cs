@@ -6,6 +6,7 @@ using Tretimi.Game.Scripts.System;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
+using Tretimi.Core.SM;
 
 namespace Tretimi.Game.Scripts.Installers
 {
@@ -38,6 +39,8 @@ namespace Tretimi.Game.Scripts.Installers
             Container.Bind<LoadingState>().AsSingle();
             Container.Bind<MainMenuState>().AsSingle();
             Container.Bind<SettingsState>().AsSingle();
+            Container.Bind<AchievementState>().AsSingle();
+            Container.Bind<LevelsState>().AsSingle();
             Container.Bind<GamePlayState>().AsSingle();
             Container.Bind<ShopState>().AsSingle();
         }

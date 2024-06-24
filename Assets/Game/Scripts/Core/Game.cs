@@ -7,6 +7,7 @@ using Tretimi.Game.Scripts.System;
 using Tretimi.Game.Scripts.UI;
 using UnityEngine;
 using Zenject;
+using Tretimi.Core.SM;
 
 #if UNITY_IOS
 using UnityEngine.iOS;
@@ -40,6 +41,8 @@ namespace Tretimi.Game.Scripts.Core
                 _diContainer.Resolve<LoadingState>(),
                 _diContainer.Resolve<MainMenuState>(),
                 _diContainer.Resolve<SettingsState>(),
+                _diContainer.Resolve<AchievementState>(),
+                _diContainer.Resolve<LevelsState>(),
                 _diContainer.Resolve<ShopState>(),
                 _diContainer.Resolve<GamePlayState>(),
             };

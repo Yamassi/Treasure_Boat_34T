@@ -8,6 +8,7 @@ namespace Tretimi.Game.Scripts.UI.Pages.GamePlayUI
 {
     public class GamePlayUI : MonoBehaviour
     {
+        public TextMeshProUGUI Health;
         public Result Result;
         public TextMeshProUGUI Score;
         public Image Background;

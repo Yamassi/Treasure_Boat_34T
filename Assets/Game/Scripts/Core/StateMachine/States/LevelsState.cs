@@ -51,6 +51,8 @@ namespace Tretimi.Core.SM
             {
                 level.OnPlay += Play;
             }
+            _levels.Close.onClick.AddListener(
+                () => _stateSwitcher.SwitchState<MainMenuState>());
         }
 
         public override void Unsubsribe()
@@ -59,6 +61,8 @@ namespace Tretimi.Core.SM
             {
                 level.OnPlay -= Play;
             }
+            _levels.Close.onClick.RemoveAllListeners();
+
         }
 
         public override void ComponentsToggle(bool value)
