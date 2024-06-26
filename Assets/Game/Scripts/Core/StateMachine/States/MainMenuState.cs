@@ -1,6 +1,7 @@
 using Tretimi.Core.SM;
 using Tretimi.Game.Scripts.System;
 using Tretimi.Game.Scripts.UI.Pages;
+using Tretimi.Game.Scripts.UI.Pages.Bottom;
 using Tretimi.Game.Scripts.UI.Pages.Top;
 using Zenject;
 
@@ -9,16 +10,18 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
     public class MainMenuState : State
     {
         private MainMenu _mainMenu;
-        private Top _top;
         private int _currentMode;
 
         [Inject]
         public void Construct(IStateSwitcher stateSwitcher,
             IDataService dataService,
             IAudioService audioService,
-            IUIService uiService, MainMenu mainMenu,
-            Top top)
+            IUIService uiService, 
+            MainMenu mainMenu,
+            Top top,
+            Bottom bottom)
         {
+            _bottom = bottom;
             _audioService = audioService;
             _stateSwitcher = stateSwitcher;
             _dataService = dataService;
@@ -42,32 +45,21 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
 
         public override void Subsribe()
         {
-            _mainMenu.Settings.onClick.AddListener(
-                () => _stateSwitcher.SwitchState<SettingsState>());
-            _mainMenu.Shop.onClick.AddListener(
-                () => _stateSwitcher.SwitchState<ShopState>());
-            _mainMenu.Home.onClick.AddListener(
-                () => _stateSwitcher.SwitchState<MainMenuState>());
-            _mainMenu.Levels.onClick.AddListener(
-                () => _stateSwitcher.SwitchState<LevelsState>());
-            _mainMenu.Achievement.onClick.AddListener(
-                () => _stateSwitcher.SwitchState<AchievementState>());
+            base.Subsribe();
             _mainMenu.Play.onClick.AddListener(Play);
         }
 
         public override void Unsubsribe()
         {
-            _mainMenu.Settings.onClick.RemoveAllListeners();
-            _mainMenu.Shop.onClick.RemoveAllListeners();
-            _mainMenu.Home.onClick.RemoveAllListeners();
-            _mainMenu.Levels.onClick.RemoveAllListeners();
-            _mainMenu.Achievement.onClick.RemoveAllListeners();
+            base.Unsubsribe();
             _mainMenu.Play.onClick.RemoveAllListeners();
         }
 
         public override void ComponentsToggle(bool value)
         {
             _mainMenu.gameObject.SetActive(value);
+            _top.gameObject.SetActive(value);
+            _bottom.gameObject.SetActive(value);
         }
 
         private void Play()
@@ -78,7 +70,6 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
         private void Init()
         {
             _audioService.PlayMenuMusic();
-            _top.gameObject.SetActive(true);
 
             _uiService.UpdateUI();
         }

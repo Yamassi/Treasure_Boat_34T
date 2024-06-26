@@ -4607,11 +4607,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 132509999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 65043400}
-  _undone: {fileID: 308000984}
+  _id: 0
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &133639937
 GameObject:
   m_ObjectHideFlags: 0
@@ -7710,11 +7714,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 214298910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 1351101107}
-  _undone: {fileID: 322402277}
+  _id: 5
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &214339745
 GameObject:
   m_ObjectHideFlags: 0
@@ -8239,7 +8247,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1235880088}
-  - {fileID: 843328020}
   m_Father: {fileID: 609372933}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8259,12 +8266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31df9fadcf0d8457984f13e5d67fdd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shop: {fileID: 1531951684}
-  Settings: {fileID: 843328022}
-  Achievement: {fileID: 25923427}
-  Levels: {fileID: 1235880091}
-  Home: {fileID: 813381376}
-  Play: {fileID: 1590010347}
+  Play: {fileID: 1235880091}
 --- !u!1 &224089821
 GameObject:
   m_ObjectHideFlags: 0
@@ -12664,11 +12666,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 393716181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 1745044161}
-  _undone: {fileID: 872704121}
+  _id: 4
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &398844170
 GameObject:
   m_ObjectHideFlags: 0
@@ -13494,11 +13500,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 435683682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 1577828139}
-  _undone: {fileID: 1634965513}
+  _id: 6
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &435963820
 GameObject:
   m_ObjectHideFlags: 0
@@ -17352,6 +17362,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 843328020}
   - {fileID: 30013699}
   m_Father: {fileID: 609372933}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17373,6 +17384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coins: {fileID: 1093375243}
+  Settings: {fileID: 843328022}
 --- !u!1 &567084298
 GameObject:
   m_ObjectHideFlags: 0
@@ -18499,7 +18511,7 @@ MonoBehaviour:
   InAppShop: {fileID: 1740021509}
   Levels: {fileID: 1086077248}
   Settings: {fileID: 1813472894}
-  Achievement: {fileID: 2128918250}
+  Achievement: {fileID: 0}
   Shop: {fileID: 641506358}
   Top: {fileID: 566109673}
   Bottom: {fileID: 1781627659}
@@ -23837,11 +23849,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 794255088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 1566488713}
-  _undone: {fileID: 922125948}
+  _id: 3
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &796062907
 GameObject:
   m_ObjectHideFlags: 0
@@ -24670,12 +24686,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843328019}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 223667823}
+  m_Father: {fileID: 566109672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.03865075, y: 0.86878836}
   m_AnchorMax: {x: 0.2065816, y: 0.9340862}
@@ -44089,11 +44105,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1503236136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 1325647667}
-  _undone: {fileID: 665916957}
+  _id: 7
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &1507999476
 GameObject:
   m_ObjectHideFlags: 0
@@ -46291,11 +46311,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1591993166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 71656169}
-  _undone: {fileID: 843934346}
+  _id: 9
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &1592313964
 GameObject:
   m_ObjectHideFlags: 0
@@ -51140,11 +51164,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1721732612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 856222538}
-  _undone: {fileID: 1849303096}
+  _id: 1
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &1727998023
 GameObject:
   m_ObjectHideFlags: 0
@@ -52701,6 +52729,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9634332029c8c4849b31e6acb0391f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Missions: {fileID: 25923427}
+  Home: {fileID: 813381376}
+  Shop: {fileID: 1531951684}
 --- !u!1 &1784411250
 GameObject:
   m_ObjectHideFlags: 0
@@ -53311,7 +53342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1813472893
 RectTransform:
   m_ObjectHideFlags: 0
@@ -58519,11 +58550,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1999514443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 1727998023}
-  _undone: {fileID: 1443230531}
+  _id: 2
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &2005784228
 GameObject:
   m_ObjectHideFlags: 0
@@ -61047,8 +61082,8 @@ RectTransform:
   - {fileID: 544382195}
   m_Father: {fileID: 259905796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.97}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -61183,7 +61218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2128918247
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61252,20 +61287,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2128918246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b26b6fc1af4ba04ebe28f1c858f6ffe, type: 3}
+  m_Script: {fileID: 11500000, guid: f9e7f623f702d46b380adb4d624de130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AchievementItems:
-  - {fileID: 132510001}
-  - {fileID: 1721732614}
-  - {fileID: 1999514445}
-  - {fileID: 794255090}
-  - {fileID: 393716183}
-  - {fileID: 214298912}
-  - {fileID: 435683684}
-  - {fileID: 1503236138}
-  - {fileID: 2130643349}
-  - {fileID: 1591993168}
+  Close: {fileID: 0}
+  MissionsItems: []
 --- !u!1 &2130549743
 GameObject:
   m_ObjectHideFlags: 0
@@ -61389,11 +61415,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2130643347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07710a333f55b749bbbaf658601306c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8bad597dae24944a4d04a2b8143aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _done: {fileID: 593001644}
-  _undone: {fileID: 481089865}
+  _id: 8
+  _rewardSumm: 0
+  _complete: {fileID: 0}
+  _uncomplete: {fileID: 0}
+  _taked: {fileID: 0}
+  _reward: {fileID: 0}
 --- !u!1 &2132343926
 GameObject:
   m_ObjectHideFlags: 0
