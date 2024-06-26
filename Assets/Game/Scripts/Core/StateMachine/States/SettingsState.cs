@@ -39,15 +39,15 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
         {
             _settings.Back.onClick.AddListener(
                 () => _stateSwitcher.SwitchState<MainMenuState>());
-            _settings.Music.Button.onClick.AddListener(SwitchMusic);
-            _settings.Sound.Button.onClick.AddListener(SwitchSound);
+            _settings.Music.OnSwitch += SwitchMusic;
+            _settings.Sound.OnSwitch += SwitchSound;
         }
 
         public override void Unsubsribe()
         {
             _settings.Back.onClick.RemoveAllListeners();
-            _settings.Music.Button.onClick.RemoveAllListeners();
-            _settings.Sound.Button.onClick.RemoveAllListeners();
+            _settings.Music.OnSwitch -= SwitchMusic;
+            _settings.Sound.OnSwitch -= SwitchSound;
         }
 
         public override void ComponentsToggle(bool value)
