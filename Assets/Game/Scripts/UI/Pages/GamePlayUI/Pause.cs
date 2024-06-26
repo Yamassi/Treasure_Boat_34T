@@ -6,7 +6,7 @@ namespace Tretimi.Game.Scripts.UI.Pages
 {
     public class Pause : MonoBehaviour
     {
-        public Button Continue, Repeat, BackToMenu;
+        public Button Continue, Repeat, BackToMenu, Close;
         public SwitchButton Music, Sound;
     }
 }

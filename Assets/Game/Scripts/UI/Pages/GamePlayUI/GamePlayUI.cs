@@ -9,8 +9,10 @@ namespace Tretimi.Game.Scripts.UI.Pages.GamePlayUI
     public class GamePlayUI : MonoBehaviour
     {
         public TextMeshProUGUI Health;
-        public Result Result;
-        public TextMeshProUGUI Score;
+        public TextMeshProUGUI Coins, Fish;
+        public Result Win, Lose;
+        public Pause Pause;
+        public Button PauseBtn;
         public Image Background;
 
         public async Task SetBackground(int id)
