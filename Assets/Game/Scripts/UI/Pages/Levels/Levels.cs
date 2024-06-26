@@ -8,5 +8,6 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
     {
         public List<LevelsItem> LevelsItems;
         public Button Close;
+        public Button Play;
     }
 }

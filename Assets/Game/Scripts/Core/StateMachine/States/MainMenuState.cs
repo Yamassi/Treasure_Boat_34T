@@ -64,7 +64,7 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
 
         private void Play()
         {
-            _stateSwitcher.SwitchState<GamePlayState>();
+            _stateSwitcher.SwitchState<LevelsState>();
         }
 
         private void Init()

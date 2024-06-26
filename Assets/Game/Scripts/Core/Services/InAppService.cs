@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using TMPro;
+using Tretimi.Game.Scripts.Core.StateMachine.States;
 using Tretimi.Game.Scripts.Data;
 using Tretimi.Game.Scripts.System;
 using UnityEngine;
@@ -15,12 +16,15 @@ namespace Tretimi.Game.Scripts.Core.Services
         private IUIService _uiService;
         [SerializeField] private GameObject _inAppLoadingPage;
         [SerializeField] private TextMeshProUGUI _messageText;
+        private ShopState _shopState;
 
         [Inject]
         public void Construct(
             IDataService dataService,
-            IUIService uiService)
+            IUIService uiService,
+            ShopState shopState)
         {
+            _shopState = shopState;
             _dataService = dataService;
             _uiService = uiService;
         }
@@ -53,6 +57,33 @@ namespace Tretimi.Game.Scripts.Core.Services
         {
             if (product.definition.id == Const.IAP_1)
             {
+                _dataService.AddCoins(3000);
+                _uiService.UpdateUI();
+            }
+            if (product.definition.id == Const.IAP_2)
+            {
+                _dataService.AddCoins(5000);
+                _uiService.UpdateUI();
+            }
+            if (product.definition.id == Const.IAP_3)
+            {
+                _dataService.AddCoins(8000);
+                _uiService.UpdateUI();
+            }
+            if (product.definition.id == Const.IAP_4)
+            {
+                _dataService.AddBackground(5);
+                _shopState.SetBackgrounds();
+            }
+            if (product.definition.id == Const.IAP_5)
+            {
+                _dataService.AddBackground(6);
+                _shopState.SetBackgrounds();
+            }
+            if (product.definition.id == Const.IAP_6)
+            {
+                _dataService.AddBackground(7);
+                _shopState.SetBackgrounds();
             }
         }
 

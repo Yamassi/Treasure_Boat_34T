@@ -11,6 +11,9 @@ namespace Tretimi.Game.Scripts.Data
         public List<RewardState> Rewards;
         public List<MissionState> Missions;
         public List<LevelState> Levels;
+        public List<ShopItemData> Hearts;
+        public List<ShopItemData> Boats;
+        public List<ShopItemData> Backgrounds;
     }
 
     [Serializable]
@@ -22,7 +25,7 @@ namespace Tretimi.Game.Scripts.Data
     }
 
     [Serializable]
-    public enum ShopItem
+    public enum ShopItemData
     {
         OnSale,
         Available,
@@ -42,6 +45,7 @@ namespace Tretimi.Game.Scripts.Data
     {
         Lock,
         Open,
+        Selected,
         OneStar,
         TwoStar,
         ThreeStar

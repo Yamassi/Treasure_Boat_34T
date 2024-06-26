@@ -15,7 +15,7 @@ namespace Tretimi.Game.Scripts.UI.Components
         [SerializeField] private bool _isBoats;
         private int _currentTabIndex = 0;
 
-        private void Start()
+        private void OnEnable()
         {
             leftArrowButton.onClick.AddListener(PreviousTab);
             rightArrowButton.onClick.AddListener(NextTab);
@@ -25,8 +25,8 @@ namespace Tretimi.Game.Scripts.UI.Components
 
         private void OnDisable()
         {
-            leftArrowButton.onClick.RemoveListener(PreviousTab);
-            rightArrowButton.onClick.RemoveListener(PreviousTab);
+            leftArrowButton.onClick.RemoveAllListeners();
+            rightArrowButton.onClick.RemoveAllListeners();
         }
 
         private void PreviousTab()
@@ -36,6 +36,7 @@ namespace Tretimi.Game.Scripts.UI.Components
             {
                 _currentTabIndex = tabs.Count - 1;
             }
+
             UpdateTabVisibility();
         }
 
@@ -46,6 +47,7 @@ namespace Tretimi.Game.Scripts.UI.Components
             {
                 _currentTabIndex = 0;
             }
+
             UpdateTabVisibility();
         }
 
@@ -55,9 +57,10 @@ namespace Tretimi.Game.Scripts.UI.Components
             {
                 tabs[i].SetActive(i == _currentTabIndex);
             }
-            if(_tabHeader != null)
+
+            if (_tabHeader != null)
             {
-                if(!_isBoats)
+                if (!_isBoats)
                 {
                     if (_currentTabIndex == 0) _tabHeader.text = "Coins";
                     if (_currentTabIndex == 1) _tabHeader.text = "Hearts";

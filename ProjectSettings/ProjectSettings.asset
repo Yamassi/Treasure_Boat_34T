@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 0
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Game
+  companyName: WhiteApps
+  productName: Treasure Boat
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -161,7 +161,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.Game
+    Android: com.whiteapps.treasureboat
     Standalone: com.DefaultCompany.Game
     iPhone: com.DefaultCompany.Game
   buildNumber:
@@ -848,7 +848,7 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
-    Purchasing: 0
+    Purchasing: 1
     Unity Ads: 0
   luminIcon:
     m_Name: 
@@ -869,11 +869,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 30e65eaa-fdca-43e8-8753-d8a834822621
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Treasure Boat
+  organizationId: nagebator_9000
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

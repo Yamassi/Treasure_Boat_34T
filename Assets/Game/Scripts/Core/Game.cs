@@ -41,7 +41,7 @@ namespace Tretimi.Game.Scripts.Core
                 _diContainer.Resolve<LoadingState>(),
                 _diContainer.Resolve<MainMenuState>(),
                 _diContainer.Resolve<SettingsState>(),
-                _diContainer.Resolve<AchievementState>(),
+                _diContainer.Resolve<MissionsState>(),
                 _diContainer.Resolve<LevelsState>(),
                 _diContainer.Resolve<ShopState>(),
                 _diContainer.Resolve<GamePlayState>(),

@@ -49,20 +49,24 @@ namespace Tretimi.Core.SM
         {
             foreach (var level in _levels.LevelsItems)
             {
-                level.OnPlay += Play;
+                level.OnSelect += Select;
             }
+
             _levels.Close.onClick.AddListener(
                 () => _stateSwitcher.SwitchState<MainMenuState>());
+            _levels.Play.onClick.AddListener(
+                ()=>_stateSwitcher.SwitchState<GamePlayState>());
         }
 
         public override void Unsubsribe()
         {
             foreach (var level in _levels.LevelsItems)
             {
-                level.OnPlay -= Play;
+                level.OnSelect -= Select;
             }
-            _levels.Close.onClick.RemoveAllListeners();
 
+            _levels.Close.onClick.RemoveAllListeners();
+            _levels.Play.onClick.RemoveAllListeners();
         }
 
         public override void ComponentsToggle(bool value)
@@ -71,20 +75,23 @@ namespace Tretimi.Core.SM
             _mainMenu.gameObject.SetActive(value);
         }
 
-        private void Play(int id)
+        private void Select(int id)
         {
-            PlayerPrefs.SetInt("CurrentLevel", id);
-            _stateSwitcher.SwitchState<GamePlayState>();
+            _dataService.SelectLevel(id);
+            SetLevels();
         }
 
         private void SetLevels()
         {
             var levels = _dataService.Levels;
-
+            Debug.Log($"SetLevels {levels.Count}");
             for (int i = 0; i < levels.Count; i++)
             {
                 switch (levels[i])
                 {
+                    case LevelState.Selected:
+                        _levels.LevelsItems[i].SetSelected();
+                        break;
                     case LevelState.Lock:
                         _levels.LevelsItems[i].SetLock();
                         break;

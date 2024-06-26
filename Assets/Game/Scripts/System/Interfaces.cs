@@ -52,6 +52,16 @@ namespace Tretimi.Game.Scripts.System
         void SetMission(int id, MissionState state);
         IReadOnlyList<LevelState> Levels { get; }
         void SetLevel(int id, LevelState state);
+        void SelectLevel(int id);
+        IReadOnlyList<ShopItemData> Hearts { get; }
+        void AddHeart(int id);
+        void SelectHeart(int id);
+        IReadOnlyList<ShopItemData> Boats { get; }
+        void AddBoat(int id);
+        void SelectBoat(int id);
+        IReadOnlyList<ShopItemData> Backgrounds { get; }
+        void AddBackground(int id);
+        void SelectBackground(int id);
     }
 
     public interface IStateSwitcher

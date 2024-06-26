@@ -39,7 +39,7 @@ namespace Tretimi.Game.Scripts.Installers
             Container.Bind<LoadingState>().AsSingle();
             Container.Bind<MainMenuState>().AsSingle();
             Container.Bind<SettingsState>().AsSingle();
-            Container.Bind<AchievementState>().AsSingle();
+            Container.Bind<MissionsState>().AsSingle();
             Container.Bind<LevelsState>().AsSingle();
             Container.Bind<GamePlayState>().AsSingle();
             Container.Bind<ShopState>().AsSingle();

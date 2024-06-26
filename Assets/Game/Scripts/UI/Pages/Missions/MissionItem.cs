@@ -10,14 +10,14 @@ namespace Tretimi.Game.Scripts.UI.Pages.Missions
         [SerializeField] private int _id, _rewardSumm;
         [SerializeField] private Button _complete;
         [SerializeField] private Image _uncomplete, _taked;
-        [SerializeField] private TextMeshProUGUI _reward;
+        // [SerializeField] private TextMeshProUGUI _reward;
 
         public Action<int, int> OnGetReward;
 
         private void OnValidate()
         {
             _id = transform.GetSiblingIndex();
-            _reward.text = _rewardSumm.ToString();
+            // _reward.text = _rewardSumm.ToString();
         }
 
         private void OnDisable() =>

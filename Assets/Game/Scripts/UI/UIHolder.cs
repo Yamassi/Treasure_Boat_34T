@@ -21,7 +21,6 @@ namespace Tretimi.Game.Scripts.UI
         public InAppShop InAppShop;
         public Levels Levels;
         public Settings Settings;
-        public Achievement Achievement;
         public Shop Shop;
         public Top Top;
         public Bottom Bottom;

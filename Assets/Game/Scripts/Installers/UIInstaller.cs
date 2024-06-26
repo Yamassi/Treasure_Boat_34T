@@ -25,7 +25,6 @@ namespace Tretimi.Game.Scripts.Installers
             Container.Bind<DailyRewards>().FromInstance(_uIHolder.DailyRewards).AsSingle();
             Container.Bind<Missions>().FromInstance(_uIHolder.Missions).AsSingle();
             Container.Bind<Levels>().FromInstance(_uIHolder.Levels).AsSingle();
-            Container.Bind<Achievement>().FromInstance(_uIHolder.Achievement).AsSingle();
             Container.Bind<InAppShop>().FromInstance(_uIHolder.InAppShop).AsSingle();
             Container.Bind<Settings>().FromInstance(_uIHolder.Settings).AsSingle();
             Container.Bind<Shop>().FromInstance(_uIHolder.Shop).AsSingle();

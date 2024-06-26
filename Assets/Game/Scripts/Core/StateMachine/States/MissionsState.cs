@@ -1,6 +1,7 @@
 using Tretimi.Game.Scripts.Data;
 using Tretimi.Game.Scripts.System;
 using Tretimi.Game.Scripts.UI.Pages;
+using Tretimi.Game.Scripts.UI.Pages.Bottom;
 using Tretimi.Game.Scripts.UI.Pages.Missions;
 using Tretimi.Game.Scripts.UI.Pages.Top;
 using Zenject;
@@ -16,10 +17,13 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
             Missions missions,
             IAudioService audioService,
             Top top,
+            Bottom bottom,
             MainMenu mainMenu,
             IDataService dataService,
             IUIService uiService)
         {
+            _bottom = bottom;
+            _top = top;
             _uiService = uiService;
             _dataService = dataService;
             _missions = missions;
@@ -42,8 +46,7 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
 
         public override void Subsribe()
         {
-            _missions.Close.onClick.AddListener(
-                () => _stateSwitcher.SwitchState<MainMenuState>());
+            base.Subsribe();
             for (int i = 0; i < _missions.MissionsItems.Count; i++)
             {
                 _missions.MissionsItems[i].OnGetReward += GetReward;
@@ -52,7 +55,7 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
 
         public override void Unsubsribe()
         {
-            _missions.Close.onClick.RemoveAllListeners();
+            base.Unsubsribe();
             for (int i = 0; i < _missions.MissionsItems.Count; i++)
             {
                 _missions.MissionsItems[i].OnGetReward -= GetReward;
@@ -62,6 +65,8 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
         public override void ComponentsToggle(bool value)
         {
             _missions.gameObject.SetActive(value);
+            _top.gameObject.SetActive(value);
+            _bottom.gameObject.SetActive(value);
         }
 
         private void GetReward(int id, int reward)

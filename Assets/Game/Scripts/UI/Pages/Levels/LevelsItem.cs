@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Tretimi.Game.Scripts.UI.Pages.Levels
@@ -11,37 +12,60 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
     {
         [SerializeField] private int _id;
         [SerializeField] private List<Image> _stars;
-        [SerializeField] private Button _play;
+        [SerializeField] private Button _open;
         [SerializeField] private Image _lock;
-        [SerializeField] private Image _opened;
+        [SerializeField] private Image _selected;
         [SerializeField] private bool _withStars;
+        [SerializeField] private TextMeshProUGUI _level;
 
-        public Action<int> OnPlay;
+        public Action<int> OnSelect;
+
+        private void OnValidate()
+        {
+            _level = GetComponentInChildren<TextMeshProUGUI>();
+            _level.text = $"{_id + 1}";
+        }
+
+        private void OnEnable()
+        {
+            _open.onClick.RemoveAllListeners();
+            _open.onClick.AddListener(() => OnSelect?.Invoke(_id));
+        }
 
         private void OnDisable() =>
-            _play.onClick.RemoveAllListeners();
-        [Button]
+            _open.onClick.RemoveAllListeners();
 
-        public void SetOpen()
+        [Button]
+        public void SetSelected()
         {
             _lock.gameObject.SetActive(false);
+            _selected.gameObject.SetActive(true);
+            _open.gameObject.SetActive(false);
+        }
+
+        [Button]
+        public void SetOpen()
+        {
+            Debug.Log("Set Open");
+            _lock.gameObject.SetActive(false);
+            _selected.gameObject.SetActive(false);
+            _open.gameObject.SetActive(true);
 
             if (_withStars)
             {
                 _stars[0].gameObject.SetActive(false);
                 _stars[1].gameObject.SetActive(false);
                 _stars[2].gameObject.SetActive(false);
-                _opened.gameObject.SetActive(true);
             }
-
-            _play.onClick.RemoveAllListeners();
-            _play.onClick.AddListener(() => OnPlay?.Invoke(_id));
         }
 
         [Button]
         public void SetLock()
         {
+            Debug.Log("Set Lock");
             _lock.gameObject.SetActive(true);
+            _selected.gameObject.SetActive(false);
+            _open.gameObject.SetActive(true);
 
             if (_withStars)
             {
@@ -50,6 +74,7 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
                 _stars[2].gameObject.SetActive(false);
             }
         }
+
         public void SetStars(StarsCount stars)
         {
             switch (stars)
@@ -70,7 +95,8 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
                     _stars[2].gameObject.SetActive(true);
                     break;
             }
-            _opened.gameObject.SetActive(false);
+
+            _selected.gameObject.SetActive(false);
         }
 
         public enum StarsCount
