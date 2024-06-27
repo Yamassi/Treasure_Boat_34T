@@ -38,6 +38,7 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
         [Button]
         public void SetSelected()
         {
+            Debug.Log("Set Selected");
             _lock.gameObject.SetActive(false);
             _selected.gameObject.SetActive(true);
             _open.gameObject.SetActive(false);
@@ -50,13 +51,6 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
             _lock.gameObject.SetActive(false);
             _selected.gameObject.SetActive(false);
             _open.gameObject.SetActive(true);
-
-            if (_withStars)
-            {
-                _stars[0].gameObject.SetActive(false);
-                _stars[1].gameObject.SetActive(false);
-                _stars[2].gameObject.SetActive(false);
-            }
         }
 
         [Button]
@@ -77,6 +71,7 @@ namespace Tretimi.Game.Scripts.UI.Pages.Levels
 
         public void SetStars(StarsCount stars)
         {
+            Debug.Log($"Set Stars {stars}");
             switch (stars)
             {
                 case StarsCount.OneStar:

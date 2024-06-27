@@ -50,7 +50,7 @@ namespace Tretimi.Game.Scripts.System
         void SetReward(int id, RewardState state);
         IReadOnlyList<MissionState> Missions { get; }
         void SetMission(int id, MissionState state);
-        IReadOnlyList<LevelState> Levels { get; }
+        IReadOnlyList<LevelData> Levels { get; }
         void SetLevel(int id, LevelState state);
         void SelectLevel(int id);
         IReadOnlyList<ShopItemData> Hearts { get; }

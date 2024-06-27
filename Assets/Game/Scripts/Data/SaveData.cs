@@ -10,7 +10,7 @@ namespace Tretimi.Game.Scripts.Data
         public DateTime NextRewardTime;
         public List<RewardState> Rewards;
         public List<MissionState> Missions;
-        public List<LevelState> Levels;
+        public List<LevelData> Levels;
         public List<ShopItemData> Hearts;
         public List<ShopItemData> Boats;
         public List<ShopItemData> Backgrounds;
@@ -41,11 +41,23 @@ namespace Tretimi.Game.Scripts.Data
     }
 
     [Serializable]
+    public class LevelData
+    {
+        public bool IsSelected;
+        public LevelState State;
+
+        public LevelData(bool isSelected, LevelState state)
+        {
+            IsSelected = isSelected;
+            State = state;
+        }
+    }
+
+    [Serializable]
     public enum LevelState
     {
         Lock,
         Open,
-        Selected,
         OneStar,
         TwoStar,
         ThreeStar

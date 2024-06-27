@@ -170,6 +170,8 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
 
             _gamePlayUI.Lose.gameObject.SetActive(true);
             _gamePlayController.ClearGamePlay();
+
+            _audioService.Lose();
         }
 
         private void Win()
@@ -212,6 +214,8 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
 
             _gamePlayUI.Win.gameObject.SetActive(true);
             _gamePlayController.ClearGamePlay();
+
+            _audioService.Win();
         }
 
         private void UpdateUI()

@@ -12,6 +12,7 @@ namespace Tretimi.Game.Scripts.Data
         public const string CURRENT_BOAT = "CurrentBoat";
         public const string CURRENT_BACKGROUND = "CurrentBackground";
         public const string CURRENT_LEVEL = "CurrentLevel";
+        public const string SELECTED_LEVEL = "SelectedLevel";
 
         public const string IAP_1 = "iap1";
         public const string IAP_2 = "iap2";

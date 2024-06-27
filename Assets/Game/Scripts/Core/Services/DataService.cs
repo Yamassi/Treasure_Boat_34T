@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Tretimi.Game.Scripts.Data;
 using Tretimi.Game.Scripts.System;
 using UnityEngine;
@@ -16,13 +17,13 @@ namespace Tretimi.Game.Scripts.Core.Services
 
             if (saveData is null)
             {
-                List<LevelState> levels = new();
+                List<LevelData> levels = new();
                 for (int i = 0; i < 24; i++)
                 {
                     if (i == 0)
-                        levels.Add(LevelState.Selected);
+                        levels.Add(new(isSelected: true, LevelState.Open));
                     else
-                        levels.Add(LevelState.Lock);
+                        levels.Add(new(isSelected: false, LevelState.Lock));
                 }
 
                 List<MissionState> missions = new();
@@ -66,6 +67,7 @@ namespace Tretimi.Game.Scripts.Core.Services
                 PlayerPrefs.SetFloat(Const.MUSIC_VOLUME, 1);
                 PlayerPrefs.SetFloat(Const.SOUND_VOLUME, 1);
 
+                PlayerPrefs.SetInt(Const.SELECTED_LEVEL, 0);
                 PlayerPrefs.SetInt(Const.CURRENT_LEVEL, 0);
                 PlayerPrefs.SetInt(Const.CURRENT_HEART, 0);
                 PlayerPrefs.SetInt(Const.CURRENT_BOAT, 0);
@@ -113,20 +115,16 @@ namespace Tretimi.Game.Scripts.Core.Services
             _data.Missions[id] = state;
         }
 
-        public IReadOnlyList<LevelState> Levels => _data.Levels;
+        public IReadOnlyList<LevelData> Levels => _data.Levels;
 
         public void SetLevel(int id, LevelState state)
         {
-            _data.Levels[id] = state;
+            _data.Levels[id].State = state;
         }
 
         public void SelectLevel(int id)
         {
-            int currentItem = PlayerPrefs.GetInt(Const.CURRENT_LEVEL);
-            _data.Levels[currentItem] = LevelState.Open;
-
-            _data.Levels[id] = LevelState.Selected;
-            PlayerPrefs.SetInt(Const.CURRENT_LEVEL, id);
+            PlayerPrefs.SetInt(Const.SELECTED_LEVEL, id);
         }
 
         public IReadOnlyList<ShopItemData> Hearts => _data.Hearts;

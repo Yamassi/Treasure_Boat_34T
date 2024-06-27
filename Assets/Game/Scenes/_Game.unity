@@ -18480,13 +18480,15 @@ MonoBehaviour:
   _musicPlayer: {fileID: 610398005}
   _soundPlayer: {fileID: 610398004}
   _audioMixer: {fileID: 24100000, guid: c2e84df7b1ba043aea8f04b5525d24e6, type: 2}
-  _gamePlayMusic: []
-  _menuMusic: []
-  _click: {fileID: 8300000, guid: 7d7e7a91b4ed448a0bbe9db280cb8539, type: 3}
-  _obstacle: {fileID: 8300000, guid: 3474525753c3e49958b8e6227ffeb130, type: 3}
-  _goal: {fileID: 8300000, guid: 8837dac8060e54a979c0d54242a93772, type: 3}
-  _win: {fileID: 8300000, guid: 001bb5d74471a441b9e61e032231f77b, type: 3}
-  _lose: {fileID: 8300000, guid: 78ad16196bf8b4f169c4c060df5fd3cd, type: 3}
+  _gamePlayMusic:
+  - {fileID: 8300000, guid: 42e73d4da838748ffae11d8aca4f366c, type: 3}
+  _menuMusic:
+  - {fileID: 8300000, guid: c009471b4d3b84bc48e901545f9d28a5, type: 3}
+  _click: {fileID: 8300000, guid: f2f45c804b3e54658ab4819cb1a78685, type: 3}
+  _obstacle: {fileID: 8300000, guid: 3f6229794d48441dea7d0c54bd04eda6, type: 3}
+  _goal: {fileID: 8300000, guid: a12b61f5d659f44539f9a3f293637fad, type: 3}
+  _win: {fileID: 8300000, guid: f4f9ca2e8bcf64631835935c696e6d8c, type: 3}
+  _lose: {fileID: 8300000, guid: 4f74f68c6bafb4118ab89dce4a374154, type: 3}
   _isMainMenu: 1
 --- !u!1 &611613724
 GameObject:
@@ -63449,8 +63451,8 @@ RectTransform:
   - {fileID: 544382195}
   m_Father: {fileID: 259905796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.97}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -63510,7 +63512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2128918247
 RectTransform:
   m_ObjectHideFlags: 0

@@ -55,7 +55,11 @@ namespace Tretimi.Core.SM
             _levels.Close.onClick.AddListener(
                 () => _stateSwitcher.SwitchState<MainMenuState>());
             _levels.Play.onClick.AddListener(
-                ()=>_stateSwitcher.SwitchState<GamePlayState>());
+                () =>
+                {
+                    PlayerPrefs.SetInt(Const.CURRENT_LEVEL, PlayerPrefs.GetInt(Const.SELECTED_LEVEL));
+                    _stateSwitcher.SwitchState<GamePlayState>();
+                });
         }
 
         public override void Unsubsribe()
@@ -87,11 +91,8 @@ namespace Tretimi.Core.SM
             Debug.Log($"SetLevels {levels.Count}");
             for (int i = 0; i < levels.Count; i++)
             {
-                switch (levels[i])
+                switch (levels[i].State)
                 {
-                    case LevelState.Selected:
-                        _levels.LevelsItems[i].SetSelected();
-                        break;
                     case LevelState.Lock:
                         _levels.LevelsItems[i].SetLock();
                         break;
@@ -112,6 +113,9 @@ namespace Tretimi.Core.SM
                         break;
                 }
             }
+
+            int selectedLevel = PlayerPrefs.GetInt(Const.SELECTED_LEVEL);
+            _levels.LevelsItems[selectedLevel].SetSelected();
         }
     }
 }
