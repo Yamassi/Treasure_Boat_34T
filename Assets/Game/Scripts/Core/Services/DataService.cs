@@ -21,16 +21,16 @@ namespace Tretimi.Game.Scripts.Core.Services
                 {
                     if (i == 0)
                         levels.Add(LevelState.Selected);
-                    else 
+                    else
                         levels.Add(LevelState.Lock);
                 }
 
                 List<MissionState> missions = new();
                 for (int i = 0; i < 10; i++)
                 {
-                     missions.Add(MissionState.Uncomplete);
+                    missions.Add(MissionState.Uncomplete);
                 }
-                
+
                 Debug.Log("Saved Data is null and reseted");
                 _data = new()
                 {
@@ -39,7 +39,7 @@ namespace Tretimi.Game.Scripts.Core.Services
                     Missions = new(missions),
                     Hearts = new()
                     {
-                        ShopItemData.Selected ,
+                        ShopItemData.Selected,
                         ShopItemData.OnSale,
                         ShopItemData.OnSale
                     },
@@ -66,9 +66,10 @@ namespace Tretimi.Game.Scripts.Core.Services
                 PlayerPrefs.SetFloat(Const.MUSIC_VOLUME, 1);
                 PlayerPrefs.SetFloat(Const.SOUND_VOLUME, 1);
 
-                PlayerPrefs.SetInt(Const.CURRENT_HEART,0);
-                PlayerPrefs.SetInt(Const.CURRENT_BOAT,0);
-                PlayerPrefs.SetInt(Const.CURRENT_BACKGROUND,0);
+                PlayerPrefs.SetInt(Const.CURRENT_LEVEL, 0);
+                PlayerPrefs.SetInt(Const.CURRENT_HEART, 0);
+                PlayerPrefs.SetInt(Const.CURRENT_BOAT, 0);
+                PlayerPrefs.SetInt(Const.CURRENT_BACKGROUND, 0);
             }
             else
                 _data = saveData;
@@ -129,6 +130,7 @@ namespace Tretimi.Game.Scripts.Core.Services
         }
 
         public IReadOnlyList<ShopItemData> Hearts => _data.Hearts;
+
         public void AddHeart(int id)
         {
             _data.Hearts[id] = ShopItemData.Available;
@@ -150,6 +152,7 @@ namespace Tretimi.Game.Scripts.Core.Services
         }
 
         public IReadOnlyList<ShopItemData> Boats => _data.Boats;
+
         public void AddBoat(int id)
         {
             _data.Boats[id] = ShopItemData.Available;
@@ -165,6 +168,7 @@ namespace Tretimi.Game.Scripts.Core.Services
         }
 
         public IReadOnlyList<ShopItemData> Backgrounds => _data.Backgrounds;
+
         public void AddBackground(int id)
         {
             _data.Backgrounds[id] = ShopItemData.Available;

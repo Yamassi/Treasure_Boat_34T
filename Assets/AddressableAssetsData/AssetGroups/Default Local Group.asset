@@ -16,7 +16,72 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: d47f0791ea9bf426a8c1f3245a21538c
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: a6c2f397bf29f4737bcdc95482493c25
+    m_Address: Boat0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d34bfe20c816e43fe804763e545e7ba9
+    m_Address: Boat1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af99cbeeb27874f29999e4656b349440
+    m_Address: Boat2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c92a9f64e88144f3867079d8badee64
+    m_Address: Boat3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 220752cf8c51c48b19d45cb7d1cf07d4
+    m_Address: Obstacle0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f282ff9662014753807cfb4b3f70cfa
+    m_Address: Obstacle1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7778c0f0f6f874096bc136df11e90f1c
+    m_Address: Obstacle2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d310fb989fd9443aa1c64e7259f007d
+    m_Address: Obstacle3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 691e901e938104499a336ac269106c41
+    m_Address: Obstacle4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e611bdccaad44237a366553d38f64c9
+    m_Address: Obstacle5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 528e3360b94624855a3e5503c0e2babf
+    m_Address: Obstacle6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 469cc169c03e54e45960929250703eb1
+    m_Address: Fish
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d65946cb4e9249e9a56a84d46f5814a
+    m_Address: Coin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2dd53467af1e7446fbfa3b0ad1c4cb3e, type: 2}
   m_SchemaSet:

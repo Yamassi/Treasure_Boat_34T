@@ -1,6 +1,6 @@
 namespace Tretimi.Game.Scripts.GamePlay
 {
-    public class Obstacle : FallItem
+    public class Coin : FallItem
     {
     }
 }

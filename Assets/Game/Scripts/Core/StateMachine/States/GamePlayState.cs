@@ -6,6 +6,7 @@ using Tretimi.Game.Scripts.UI.Pages.GamePlayUI;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Tretimi.Game.Scripts.Core.StateMachine.States
 {
@@ -15,9 +16,9 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
         private GamePlayController _gamePlayController;
         private CompositeDisposable _disposable = new();
         private CancellationTokenSource _cts = new();
-        private int _fishCount, _maxFish, _coins;
-        private float _time;
+        private int _fishCount, _maxFishes, _coins, _lifes;
         private bool _isPause;
+        private int _currentLevel;
 
 
         [Inject]
@@ -68,6 +69,14 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
             _gamePlayUI.Lose.Repeat.onClick.AddListener(Repeat);
             _gamePlayUI.Lose.BackToMenu.onClick.AddListener(MainMenu);
 
+            _gamePlayUI.Left.onClick.AddListener(() => _gamePlayController.MoveLeft());
+            _gamePlayUI.Straight.onClick.AddListener(() => _gamePlayController.MoveStraight());
+            _gamePlayUI.Right.onClick.AddListener(() => _gamePlayController.MoveRight());
+
+            _gamePlayController.OnGetCoin += GetCoin;
+            _gamePlayController.OnGetFish += GetFish;
+            _gamePlayController.OnHitObstacle += HitObstacle;
+
             _cts = new();
         }
 
@@ -88,6 +97,14 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
             _gamePlayUI.Lose.Repeat.onClick.RemoveAllListeners();
             _gamePlayUI.Lose.BackToMenu.onClick.RemoveAllListeners();
 
+            _gamePlayUI.Left.onClick.RemoveAllListeners();
+            _gamePlayUI.Straight.onClick.RemoveAllListeners();
+            _gamePlayUI.Right.onClick.RemoveAllListeners();
+
+            _gamePlayController.OnGetCoin -= GetCoin;
+            _gamePlayController.OnGetFish -= GetFish;
+            _gamePlayController.OnHitObstacle -= HitObstacle;
+
             _cts.Cancel();
             _cts.Dispose();
             _disposable.Clear();
@@ -99,28 +116,117 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
             _gamePlayController.gameObject.SetActive(value);
         }
 
-        private void Init()
+        private async void Init()
         {
             Reset();
             UpdateUI();
 
             _audioService.PlayGamePlayMusic();
 
-            _gamePlayController.InitGame();
+            int currentBoat = PlayerPrefs.GetInt(Const.CURRENT_BOAT);
+            _currentLevel = PlayerPrefs.GetInt(Const.CURRENT_LEVEL);
+            _maxFishes += _currentLevel;
+            _lifes = PlayerPrefs.GetInt(Const.CURRENT_HEART) + 3;
+            UpdateUI();
+
+            await _gamePlayController.Init(currentBoat, _currentLevel);
         }
 
+        private void HitObstacle()
+        {
+            _lifes--;
+            if (_lifes <= 0)
+            {
+                _lifes = 0;
+                Lose();
+            }
+
+            UpdateUI();
+        }
+
+        private void GetFish()
+        {
+            _fishCount++;
+
+            if (_fishCount >= _maxFishes)
+            {
+                Win();
+            }
+
+            UpdateUI();
+        }
+
+        private void GetCoin()
+        {
+            _coins++;
+            UpdateUI();
+        }
+
+        private void Lose()
+        {
+            int reward = _coins;
+            _gamePlayUI.Win.Score.text = reward.ToString();
+            _dataService.AddCoins(reward);
+
+            _gamePlayUI.Lose.gameObject.SetActive(true);
+            _gamePlayController.ClearGamePlay();
+        }
+
+        private void Win()
+        {
+            int reward = 0;
+            if (_lifes >= 3)
+            {
+                foreach (var star in _gamePlayUI.Win.Stars)
+                {
+                    star.gameObject.SetActive(true);
+                }
+
+                reward = 100;
+                _dataService.SetLevel(_currentLevel, LevelState.ThreeStar);
+            }
+            else if (_lifes == 2)
+            {
+                _gamePlayUI.Win.Stars[0].gameObject.SetActive(true);
+                _gamePlayUI.Win.Stars[1].gameObject.SetActive(true);
+                _gamePlayUI.Win.Stars[2].gameObject.SetActive(false);
+                _dataService.SetLevel(_currentLevel, LevelState.TwoStar);
+                reward = 80;
+            }
+            else if (_lifes == 1)
+            {
+                _gamePlayUI.Win.Stars[0].gameObject.SetActive(true);
+                _gamePlayUI.Win.Stars[1].gameObject.SetActive(false);
+                _gamePlayUI.Win.Stars[2].gameObject.SetActive(false);
+                _dataService.SetLevel(_currentLevel, LevelState.OneStar);
+                reward = 50;
+            }
+
+            if (_currentLevel < _dataService.Levels.Count)
+            {
+                _dataService.SetLevel(_currentLevel + 1, LevelState.Open);
+            }
+
+            _gamePlayUI.Win.Score.text = reward.ToString();
+            _dataService.AddCoins(reward);
+
+            _gamePlayUI.Win.gameObject.SetActive(true);
+            _gamePlayController.ClearGamePlay();
+        }
 
         private void UpdateUI()
         {
-            _gamePlayUI.Fish.text = $"{_fishCount}/{_maxFish}";
+            _gamePlayUI.Fish.text = $"{_fishCount}/{_maxFishes}";
             _gamePlayUI.Coins.text = _coins.ToString();
+            _gamePlayUI.Health.text = _lifes.ToString();
         }
 
         private void Reset()
         {
             _isPause = false;
             _fishCount = 0;
-            
+            _maxFishes = 5;
+
             _gamePlayUI.Pause.gameObject.SetActive(false);
             _gamePlayUI.Win.gameObject.SetActive(false);
             _gamePlayUI.Lose.gameObject.SetActive(false);
@@ -128,18 +234,16 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
 
         private void NextLevel()
         {
-            int currentLevel = PlayerPrefs.GetInt(Const.CURRENT_LEVEL);
-
-            if (currentLevel < _dataService.Levels.Count)
+            if (_currentLevel < _dataService.Levels.Count)
             {
-                currentLevel++;
-                PlayerPrefs.SetInt(Const.CURRENT_LEVEL, currentLevel);
+                _currentLevel++;
+                PlayerPrefs.SetInt(Const.CURRENT_LEVEL, _currentLevel);
             }
 
-            if (currentLevel == _dataService.Levels.Count)
+            if (_currentLevel == _dataService.Levels.Count)
             {
-                currentLevel = 0;
-                PlayerPrefs.SetInt(Const.CURRENT_LEVEL, currentLevel);
+                _currentLevel = 0;
+                PlayerPrefs.SetInt(Const.CURRENT_LEVEL, _currentLevel);
             }
 
             _stateSwitcher.SwitchState<GamePlayState>();

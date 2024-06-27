@@ -12,7 +12,7 @@ namespace Tretimi.Game.Scripts.UI.Pages.GamePlayUI
         public TextMeshProUGUI Coins, Fish;
         public Result Win, Lose;
         public Pause Pause;
-        public Button PauseBtn;
+        public Button PauseBtn, Left, Straight, Right;
         public Image Background;
 
         public async Task SetBackground(int id)
