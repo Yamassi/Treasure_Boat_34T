@@ -26,7 +26,7 @@ namespace Tretimi.Game.Scripts.Core.Services
                 }
 
                 List<MissionState> missions = new();
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 7; i++)
                 {
                     missions.Add(MissionState.Uncomplete);
                 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using Tretimi.Game.Scripts.Data;
 using Tretimi.Game.Scripts.System;
 using Tretimi.Game.Scripts.UI.Pages;
@@ -79,6 +80,36 @@ namespace Tretimi.Game.Scripts.Core.StateMachine.States
 
         private void SetMissions()
         {
+            if (_dataService.Coins >= 100 && _dataService.Missions[0] == MissionState.Uncomplete)
+                _dataService.SetMission(0,MissionState.Complete);
+            
+            if (_dataService.Coins >= 1000 && _dataService.Missions[3] == MissionState.Uncomplete)
+                _dataService.SetMission(3,MissionState.Complete);
+            
+            if (_dataService.Coins >= 5000 && _dataService.Missions[4] == MissionState.Uncomplete)
+                _dataService.SetMission(4,MissionState.Complete);
+            
+            int threeStarsLevelsCount = _dataService.Levels.Count(s => s == LevelState.ThreeStar);
+            
+            if (threeStarsLevelsCount >= 5 && _dataService.Missions[1] == MissionState.Uncomplete)
+                _dataService.SetMission(1,MissionState.Complete);
+            
+            if (threeStarsLevelsCount >= 10 && _dataService.Missions[2] == MissionState.Uncomplete)
+                _dataService.SetMission(2,MissionState.Complete);
+            
+            if (threeStarsLevelsCount >= 20 && _dataService.Missions[5] == MissionState.Uncomplete)
+                _dataService.SetMission(5,MissionState.Complete);
+
+            if (threeStarsLevelsCount == _dataService.Levels.Count &&
+                _dataService.Missions[6] == MissionState.Uncomplete)
+            {
+                _dataService.SetMission(6,MissionState.Complete);
+                _dataService.AddBoat(3);
+            }
+                
+            
+            
+            
             var missions = _dataService.Missions;
 
             for (int i = 0; i < missions.Count; i++)
